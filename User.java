@@ -62,7 +62,7 @@ public class User {
 				buf.append(password);
 				buf.append(salt);
 				
-				
+		//3e620d37-21d5-4b5f-abe2-d58e1f59b8f3		
 		String PasswordSalt;
 		PasswordSalt=buf.toString();
 		int hashcode1=PasswordSalt.hashCode();
