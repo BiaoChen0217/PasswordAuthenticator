@@ -81,7 +81,8 @@ public class User {
 		
 		
 		
-		FileWriter writer=new FileWriter("C:/Users/30133/Desktop/out.csv",true);
+		//FileWriter writer=new FileWriter("C:/Users/30133/Desktop/out.csv",true);
+		FileWriter writer=new FileWriter("C:/Users/30133/Desktop/out.csv");
 		for(int i=0;i<list.size();i++) {
 
 			writer.append((String) list.get(i));
@@ -97,11 +98,23 @@ public class User {
 		String filePath;
 		filePath = ("C:/Users/30133/Desktop/out.csv");
 		
-		FileWriter fileWriter = new FileWriter(filePath , true);
+		//FileWriter fileWriter = new FileWriter(filePath , true);
 		Scanner file = new Scanner (new File(filePath));
 		while(file.hasNextLine())
 		{
-			list.add(file.nextLine());
+			//=new String[3];
+		
+			String line = new String(file.nextLine());
+			if(line ==null)
+				break;
+			String arrayStr[]= line.split(",");
+			
+			
+			
+			list.add(arrayStr[0]);
+			list.add(arrayStr[1]);
+			list.add(arrayStr[2]);
+			list.add(arrayStr[3]);
 			//b++;
 		}
 		
@@ -111,7 +124,7 @@ public class User {
 	}
 	
 	
-	public void Remove()
+	public void Remove() throws IOException
 	{
 		String remove;
 		boolean found=false;
@@ -128,13 +141,24 @@ public class User {
 			
 		}
 		if(found) {
-			list.remove(j);
-			list.remove(j+1);
-			list.remove(j+2);
-			list.remove(j-1);		
+			list.remove(j-1);	
+			list.remove(j-1);
+			list.remove(j-1);
+			list.remove(j-1);
 		}
 		else
 			System.out.println("The user name do not exist");
+		
+		FileWriter writer=new FileWriter("C:/Users/30133/Desktop/out.csv");
+		for(int i=0;i<list.size();i++) {
+
+			writer.append((String) list.get(i));
+			writer.append(",");
+			if((i+1)%4==0)
+				 writer.write("\n");
+		}  
+
+		  writer.close();
 	}
 
 	public void Signup()
